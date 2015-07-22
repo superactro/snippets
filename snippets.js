@@ -7,6 +7,13 @@ function Person(name, age) {
     this._age = age;
 }
 
+// Extend object 
+// Student.extends(Person);
+Object.prototype.extends = function (parent) {
+    this.prototype = Object.create(parent.prototype);
+    this.prototype.constructor.this;
+}
+
 // Console color
 console.log("%cBlue!", "color: blue;");
 
