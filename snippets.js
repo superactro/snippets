@@ -1,11 +1,36 @@
 function Person(name, age) {
-    // if object created without the 'new' keyword
+    // if object created without the 'new' keyword old browsers
     if (!(this instanceof arguments.callee)) {
         return new arguments.callee(name, age)
     }
     this._name = name;
     this._age = age;
 }
+
+// Module pattern
+var Module = (function () {
+
+    // Functions here
+    var firstFunc = function firstFunc(param) {
+        return 'first function';
+    }
+
+    var secondFunc = function secondFunc(param) {
+        return 'second function';
+    }
+
+    // Private functions here
+    var _thirdFunc = function _thirdFunc(param) {
+        return 'hiden function';
+    }
+
+    return {
+        firstFunction: firstFunc,
+        secondFunction: secondFunc
+    }
+});
+console.log(Module().firstFunction());
+
 
 // Extend object 
 // Student.extends(Person);
