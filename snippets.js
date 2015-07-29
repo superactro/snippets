@@ -29,8 +29,33 @@ var Module = (function () {
         secondFunction: secondFunc
     }
 });
-console.log(Module().firstFunction());
+//console.log(Module().firstFunction());
 
+// Method Chaining
+var Dog = (function () {
+
+    function Dog() {
+
+    }
+
+    Dog.prototype.setName = function setName(name) {
+        this._name = name;
+        return this;
+    }
+
+    Dog.prototype.setColor = function setColor(color) {
+        this._color = color;
+        return this;
+    }
+
+    return Dog;
+}());
+
+var fluffy = new Dog()
+    .setName('fluffy')
+    .setColor('brown');
+
+console.log(fluffy);
 
 // Extend object 
 // Student.extends(Person);
