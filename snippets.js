@@ -72,42 +72,56 @@ $(".element").live("click", function () {
 
 });
 
-var count = 0;
-function myFunction() {
-    count++;
-    if (count > 5) clearInterval(timeout);
-    //do something
-}
-var timeout = setInterval(myFunction, 20000);
+// Require app.js
+(function () {
+    require.config({
+        paths: {
+            'jquery': 'libs/jquery-2.0.0'
 
-if ($("#elementid").length) {
-    //it does!
-}
-
-$(document).ready(function () {
-    $("a.topLink").click(function () {
-        $("html, body").animate({
-            scrollTop: $($(this).attr("href")).offset().top + "px"
-        }, {
-            duration: 500,
-            easing: "swing"
-        });
-        return false;
+        }
     });
 });
 
-
-var max_height = 0;
-$("div.col").each(function () {
-    if ($(this).height() > max_height) { max_height = $(this).height(); }
+require(['jquery'], function () {
+    // my code here
 });
-$("div.col").height(max_height);
+
+var count = 0;
+    function myFunction() {
+        count++;
+        if (count > 5) clearInterval(timeout);
+        //do something
+    }
+    var timeout = setInterval(myFunction, 20000);
+
+    if ($("#elementid").length) {
+        //it does!
+    }
+
+    $(document).ready(function () {
+        $("a.topLink").click(function () {
+            $("html, body").animate({
+                scrollTop: $($(this).attr("href")).offset().top + "px"
+            }, {
+                duration: 500,
+                easing: "swing"
+            });
+            return false;
+        });
+    });
 
 
-jQuery.fn.centerElement = function () {
-    this.css("position", "absolute");
-    this.css("top", ($(window).height() - this.height()) / 2 + $(window).scrollTop() + "px");
-    this.css("left", ($(window).width() - this.width()) / 2 + $(window).scrollLeft() + "px")
-    return this;
-}
-$('#item').centerElement();
+    var max_height = 0;
+    $("div.col").each(function () {
+        if ($(this).height() > max_height) { max_height = $(this).height(); }
+    });
+    $("div.col").height(max_height);
+
+
+    jQuery.fn.centerElement = function () {
+        this.css("position", "absolute");
+        this.css("top", ($(window).height() - this.height()) / 2 + $(window).scrollTop() + "px");
+        this.css("left", ($(window).width() - this.width()) / 2 + $(window).scrollLeft() + "px")
+        return this;
+    }
+    $('#item').centerElement();
